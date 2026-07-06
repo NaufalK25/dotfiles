@@ -1,0 +1,126 @@
+{
+  // VISUAL STUDIO CODE SETTINGS //
+  // Text Editor
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.wordWrap": "off",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "'Fira Code Light', 'Source Code Pro', Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 20,
+  "editor.linkedEditing": true,
+  "editor.minimap.enabled": true,
+  "editor.suggestSelection": "first",
+  "files.autoSave": "afterDelay",
+  "editor.wordWrap": "off",
+  "editor.guides.bracketPairs": "active",
+  "editor.guides.indentation": false,
+  "editor.inlayHints.enabled": "on",
+  "editor.largeFileOptimizations": false,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.smoothScrolling": true,
+  "files.associations": {
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements",
+    "*.sequelizerc": "javascript"
+  },
+  "files.trimTrailingWhitespace": true,
+  // Workbench
+  "workbench.colorTheme": "Bluloco Dark",
+  "breadcrumbs.enabled": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter-notebook",
+    "git-rebase-todo": "default"
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.startupEditor": "none",
+  // Window
+  "window.title": "${dirty} o((>ω< ))o | 📂 ${activeRepositoryName} | 🌿 ${activeRepositoryBranchName} | 📝 ${activeEditorShort} | ${appName}",
+  // Features
+  "explorer.openEditors.visible": 5,
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.profiles.windows": {
+    "PowerShell": {
+      "source": "PowerShell",
+      "icon": "terminal-powershell"
+    },
+    "Command Prompt": {
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ],
+      "args": [],
+      "icon": "terminal-cmd"
+    },
+    "GitBash": {
+      "path": ["D:\\Program Files\\Git\\bin\\bash.exe"],
+      "icon": "terminal-bash"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "GitBash",
+  "terminal.integrated.gpuAcceleration": "off",
+  "http.systemCertificates": false,
+  "remote.autoForwardPortsSource": "hybrid",
+  "sync.forceDownload": false,
+  "sync.autoDownload": true,
+  "sync.autoUpload": true,
+  // Security
+  "security.workspace.trust.banner": "always",
+  "security.workspace.trust.untrustedFiles": "open",
+  // Extensions
+  // Claude Code
+  "claudeCode.preferredLocation": "sidebar",
+  // Copilot
+  "github.copilot.nextEditSuggestions.enabled": false,
+  "github.copilot.enable": {
+    "*": true
+  },
+  // Emmet
+  "emmet.includeLanguages": {
+    "django-html": "html",
+    "javascript": "html"
+  },
+  // Error Lens
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarIconsEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+  // Git
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.suggestSmartCommit": false,
+  // GitLens
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  // Git Graph
+  "git-graph.integratedTerminalShell": "D:\\Program Files\\Git\\bin\\bash.exe",
+  // JSON
+  "json.schemaDownload.trustedDomains": {
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://getcomposer.org/schema.json": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://raw.githubusercontent.com/devcontainers/spec/": true,
+    "https://raw.githubusercontent.com/microsoft/vscode/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
+  // Material Icons
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.folders.color": "#FFC107",
+  "material-icon-theme.folders.theme": "specific",
+  // Powershell Configuration
+  "powershell.powerShellDefaultVersion": "Windows PowerShell (x64)",
+  // SVG
+  "svg.preview.mode": "svg",
+  // TypeScript
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  // YAML
+  "redhat.telemetry.enabled": true,
+  // Visual Studio Code IntelliCode
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+}

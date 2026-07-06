@@ -1,0 +1,22 @@
+{
+  "recommendations": [
+    "mikestead.dotenv",
+    "usernamehw.errorlens",
+    "yoavbls.pretty-ts-errors",
+    "naumovs.color-highlight",
+    "pranaygp.vscode-css-peek",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "mkxml.vscode-filesize",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "wix.vscode-import-cost",
+    "ms-vscode.live-server",
+    "cardinal90.multi-cursor-case-preserve",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "esbenp.prettier-vscode",
+    "jock.svg",
+    "chakrounanas.turbo-console-log"
+  ]
+}
