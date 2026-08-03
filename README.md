@@ -10,6 +10,13 @@ dotfiles/
 ├── vscode/
 │   ├── extensions.json   # editor recommended extensions, linked into VS Code
 │   └── settings.json     # editor settings, linked into VS Code
+├── config/
+│   └── rtk/
+│       ├── config.toml   # rtk (token-saving CLI proxy) config, linked into ~/.config/rtk/
+│       └── filters.toml  # rtk output filters
+├── claude/
+│   ├── CLAUDE.md          # global Claude instructions, linked into ~/.claude/
+│   └── RTK.md             # rtk usage reference for Claude, linked into ~/.claude/
 ├── .editorconfig         # indent/whitespace rules, editor-agnostic
 ├── .gitattributes        # forces LF line endings
 ├── .gitconfig            # git identity + aliases
@@ -45,7 +52,7 @@ exec zsh
 
 - **Links dotfiles** — any dotfile in the repo root is symlinked into `$HOME`
   automatically (no list to maintain). Anything in `config/` is linked into
-  `~/.config/`.
+  `~/.config/`. Anything in `claude/` is linked into `~/.claude/`.
 - **Sets the global gitignore** — links `.gitignore_global` and points
   `git config --global core.excludesfile` at it.
 - **Installs CLI tools** — `ripgrep`, `fd-find`, `bat`, `zoxide`, `eza`, `fnm`,
@@ -71,6 +78,7 @@ already done before acting.
 - New home dotfile (`.tmux.conf`, etc.) → drop it in the repo root, re-run
   `install.sh`, it's picked up automatically.
 - New `~/.config/` file → drop it in `config/`.
+- New `~/.claude/` file → drop it in `claude/`.
 - New root-owned config (another nginx site, etc.) → drop it under `etc/`
   mirroring the real `/etc` path.
 

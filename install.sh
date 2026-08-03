@@ -22,6 +22,16 @@ if [ -d "$DIR/config" ]; then
   done
 fi
 
+# ~/.claude/* files, if you keep any in repo/claude/
+if [ -d "$DIR/claude" ]; then
+  mkdir -p "$HOME/.claude"
+  for f in "$DIR"/claude/*; do
+    [ -e "$f" ] || continue
+    ln -sf "$f" "$HOME/.claude/$(basename "$f")"
+    echo "linked .claude/$(basename "$f")"
+  done
+fi
+
 # global gitignore + gitattributes
 if [ -f "$DIR/.gitignore_global" ]; then
   ln -sf "$DIR/.gitignore_global" "$HOME/.gitignore_global"
