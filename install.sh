@@ -22,6 +22,17 @@ if [ -d "$DIR/config" ]; then
   done
 fi
 
+# ~/.config/gh/config.yml only — hosts.yml holds your gh oauth token and must
+# never be linked/copied here (would be exposed inside the repo directory).
+if [ -d "$DIR/gh" ]; then
+  mkdir -p "$HOME/.config/gh"
+  for f in "$DIR"/gh/*; do
+    [ -e "$f" ] || continue
+    ln -sf "$f" "$HOME/.config/gh/$(basename "$f")"
+    echo "linked .config/gh/$(basename "$f")"
+  done
+fi
+
 # ~/.claude/* files, if you keep any in repo/claude/
 if [ -d "$DIR/claude" ]; then
   mkdir -p "$HOME/.claude"

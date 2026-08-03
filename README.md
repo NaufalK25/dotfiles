@@ -17,6 +17,8 @@ dotfiles/
 ├── claude/
 │   ├── CLAUDE.md          # global Claude instructions, linked into ~/.claude/
 │   └── RTK.md             # rtk usage reference for Claude, linked into ~/.claude/
+├── gh/
+│   └── config.yml         # gh CLI config (no tokens), linked into ~/.config/gh/
 ├── .editorconfig         # indent/whitespace rules, editor-agnostic
 ├── .gitattributes        # forces LF line endings
 ├── .gitconfig            # git identity + aliases
@@ -52,7 +54,9 @@ exec zsh
 
 - **Links dotfiles** — any dotfile in the repo root is symlinked into `$HOME`
   automatically (no list to maintain). Anything in `config/` is linked into
-  `~/.config/`. Anything in `claude/` is linked into `~/.claude/`.
+  `~/.config/`. Anything in `claude/` is linked into `~/.claude/`. `gh/config.yml`
+  is linked into `~/.config/gh/` as a single file — `hosts.yml` (your gh oauth
+  token) lives alongside it on disk but is never touched by this repo.
 - **Sets the global gitignore** — links `.gitignore_global` and points
   `git config --global core.excludesfile` at it.
 - **Installs CLI tools** — `ripgrep`, `fd-find`, `bat`, `zoxide`, `eza`, `fnm`,
@@ -79,6 +83,7 @@ already done before acting.
   `install.sh`, it's picked up automatically.
 - New `~/.config/` file → drop it in `config/`.
 - New `~/.claude/` file → drop it in `claude/`.
+- New `~/.config/gh/` file → drop it in `gh/` (never `hosts.yml` — it holds your oauth token).
 - New root-owned config (another nginx site, etc.) → drop it under `etc/`
   mirroring the real `/etc` path.
 
