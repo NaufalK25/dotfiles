@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "rtk hook claude"
+            "command": "~/.claude/hooks/rtk-enforce.sh"
           }
         ]
       }
