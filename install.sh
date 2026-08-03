@@ -50,6 +50,12 @@ if [ -f "$DIR/.gitignore_global" ]; then
   echo "linked .gitignore_global"
 fi
 
+if [ -f "$DIR/.gitattributes" ]; then
+  ln -sf "$DIR/.gitattributes" "$HOME/.gitattributes"
+  git config --global core.attributesFile "$HOME/.gitattributes"
+  echo "linked .gitattributes"
+fi
+
 echo "==> Updating apt"
 sudo apt update -y
 sudo apt upgrade -y
@@ -86,6 +92,20 @@ if ! command -v eza &> /dev/null; then
   sudo apt install -y eza
 fi
 
+# --- gh (GitHub CLI, official apt repo — not always current in default Ubuntu repos) ---
+if ! command -v gh &> /dev/null; then
+  echo "==> Installing gh"
+  sudo apt install -y gpg
+  sudo mkdir -p /etc/apt/keyrings
+  wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+    | sudo gpg --dearmor -o /etc/apt/keyrings/githubcli-archive-keyring.gpg
+  echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+    | sudo tee /etc/apt/sources.list.d/github-cli.list
+  sudo chmod 644 /etc/apt/keyrings/githubcli-archive-keyring.gpg /etc/apt/sources.list.d/github-cli.list
+  sudo apt update -y
+  sudo apt install -y gh
+fi
+
 # --- fnm ---
 if ! command -v fnm &> /dev/null; then
   echo "==> Installing fnm"
@@ -102,6 +122,19 @@ fi
 if ! command -v pay-respects &> /dev/null; then
   echo "==> Installing pay-respects"
   curl -fsSL https://raw.githubusercontent.com/iffse/pay-respects/main/install.sh | sh
+fi
+
+# --- rust toolchain + rtk (token-saving CLI proxy used by Claude Code, see claude/RTK.md) ---
+if ! command -v cargo &> /dev/null; then
+  echo "==> Installing Rust toolchain (rustup)"
+  curl --proto '=https' --tlsv1.2 -fsSf https://sh.rustup.rs | sh -s -- -y
+fi
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
+if ! command -v rtk &> /dev/null; then
+  echo "==> Installing rtk"
+  cargo install --git https://github.com/rtk-ai/rtk
 fi
 
 # --- zsh plugins (autosuggestions / syntax-highlighting) ---
@@ -167,6 +200,12 @@ if command -v fnm &> /dev/null; then
   eval "$(fnm env --shell bash)"
   fnm install --lts
   fnm default lts-latest
+fi
+
+# --- Claude Code CLI ---
+if ! command -v claude &> /dev/null; then
+  echo "==> Installing Claude Code CLI"
+  npm install -g @anthropic-ai/claude-code
 fi
 
 echo "==> Done. Restart your shell or run: exec zsh"

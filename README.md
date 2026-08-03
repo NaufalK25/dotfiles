@@ -16,7 +16,8 @@ dotfiles/
 │       └── filters.toml  # rtk output filters
 ├── claude/
 │   ├── CLAUDE.md          # global Claude instructions, linked into ~/.claude/
-│   └── RTK.md             # rtk usage reference for Claude, linked into ~/.claude/
+│   ├── RTK.md             # rtk usage reference for Claude, linked into ~/.claude/
+│   └── settings.json      # Bash-rewrite hook wiring rtk into Claude Code, linked into ~/.claude/
 ├── gh/
 │   └── config.yml         # gh CLI config (no tokens), linked into ~/.config/gh/
 ├── .editorconfig         # indent/whitespace rules, editor-agnostic
@@ -57,11 +58,14 @@ exec zsh
   `~/.config/`. Anything in `claude/` is linked into `~/.claude/`. `gh/config.yml`
   is linked into `~/.config/gh/` as a single file — `hosts.yml` (your gh oauth
   token) lives alongside it on disk but is never touched by this repo.
-- **Sets the global gitignore** — links `.gitignore_global` and points
-  `git config --global core.excludesfile` at it.
-- **Installs CLI tools** — `ripgrep`, `fd-find`, `bat`, `zoxide`, `eza`, `fnm`,
-  `starship`, `pay-respects`, plus the zsh plugins referenced in `.zshrc`
-  (`zsh-autosuggestions`, `zsh-syntax-highlighting`).
+- **Sets the global gitignore/gitattributes** — links `.gitignore_global` and
+  `.gitattributes` and points `git config --global core.excludesfile` /
+  `core.attributesFile` at them.
+- **Installs CLI tools** — `ripgrep`, `fd-find`, `bat`, `zoxide`, `eza`, `gh`,
+  `fnm`, `starship`, `pay-respects`, the Rust toolchain (`rustup`/`cargo`) plus
+  `rtk` built from source (`cargo install --git https://github.com/rtk-ai/rtk`),
+  the Claude Code CLI (`npm install -g @anthropic-ai/claude-code`), and the zsh
+  plugins referenced in `.zshrc` (`zsh-autosuggestions`, `zsh-syntax-highlighting`).
 - **Installs and enables services** — `nginx`, `redis-server`, `fail2ban` via
   `systemctl enable --now` (persist across reboots).
 - **Links `/etc` configs** — anything placed in `repo/etc/...` (e.g.
