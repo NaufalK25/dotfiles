@@ -46,6 +46,26 @@ Example: `git status` → `rtk git status` (transparent, 0 tokens overhead)
 
 Refer to CLAUDE.md for full command reference.
 
+## Compound `find` predicates (-o, -not, -exec, ...) — auto-bypassed
+
+`rtk find` rejects compound predicates/actions outright: `-o`, `-or`, `-not`,
+`-a`, `-and`, `-exec`, `-execdir`, `-ok`, `-okdir` all fail with "rtk find does
+not support compound predicates or actions." The pre-flight hook knows this
+dynamically (it test-runs rtk's own proposed rewrite for a small allow-list of
+read-only subcommands — `find`, `grep`, `cat`, `ls`, `head`, `tail`, `wc`,
+`sort`, `diff`, `stat`, `file`, `du`, `tree` — and reads rtk's own error back,
+rather than hardcoding which flags trip it) and lets the raw command through
+instead of denying it with an instruction that would just fail again. **You
+do not need to do anything differently** — a raw `find` using these flags
+will simply be allowed. Split into separate single-pattern `rtk find` calls
+only when you don't need `-o`/`-exec` at all; when you do, plain `find` is
+correct and won't be blocked.
+
+Mutating subcommands (`git`, `npm`, `docker`, ...) are never pre-executed to
+check them this way — that would perform the real action — so for anything
+outside that read-only allow-list, the mandatory rtk-first rule still applies
+unconditionally.
+
 ## No dedicated subcommand? Use the generic wrapper — never run raw
 
 `rtk --help` lists every dedicated subcommand (git, npm, npx, tsc, jest, vitest,
